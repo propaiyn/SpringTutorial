@@ -1,0 +1,39 @@
+Java Springboot
+----------------------------------------------------------------
+Introduction
+----------------------------------------------------------------
+- Springboot is a framework which gives you what you need to create a application
+- Can connect to DB, log, inject, make microservices
+    - API: Receives GET, POST, PUT AND DELETE requests
+    - Service layer: Business logic
+    - Data access layer: Responsible for connecting to databases
+    - Below this = database layer
+- Spring initializr =websiteto quickstart with boilerplate
+
+----------------------------------------------------------------
+Springboot steps
+----------------------------------------------------------------
+1. Use springboot initializer
+   // Gives starter package to create spring application
+
+application.properties file is for configuration,environment specific properties
+static and templates are for html, css web development
+
+test folder for unit and integration tests
+
+pom.xml specifies java version, configuration and dependencies
+
+spring is built on tomcat web server by default on port 8080
+
+APP STEPS
+----------------------------------------------------------------
+1. Use springboot initializer
+2. Add dependencies
+3. import project
+4. REST controller setup (in its own class)
+
+Best practice to put the rest controller in its own package
+
+TIPS
+----------------------------------------------------------------
+cmd + / comments lines out
