@@ -25,6 +25,7 @@ pom.xml specifies java version, configuration and dependencies
 
 spring is built on tomcat web server by default on port 8080
 
+----------------------------------------------------------------
 APP STEPS
 ----------------------------------------------------------------
 1. Use springboot initializer
@@ -34,6 +35,18 @@ APP STEPS
 
 Best practice to put the rest controller in its own package
 
+----------------------------------------------------------------
+API LAYER
+----------------------------------------------------------------
+- LOOK AT STUDENT CONTROLLER
+
+----------------------------------------------------------------
+SERVICE LAYER (Business logic)
+----------------------------------------------------------------
+- API layer should talk to the service layer  to get some data
+- Service layer should communicate with data access layer to get data (round trip)
+-
+----------------------------------------------------------------
 TIPS
 ----------------------------------------------------------------
 cmd + / comments lines out
