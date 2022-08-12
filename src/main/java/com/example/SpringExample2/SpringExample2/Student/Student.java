@@ -3,6 +3,7 @@ package com.example.SpringExample2.SpringExample2.Student;
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 //To map student to the database:
 @Entity // Mapping (Hibernate)
@@ -19,6 +20,7 @@ public class Student {
             generator = "student_sequence" // Sequence that we just created
     )
     private Long id;
+    @Transient // not persistent in database
     private Integer age;
     private LocalDate dateOfBirth;
     private String email;
@@ -27,17 +29,15 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, Integer age, LocalDate dateOfBirth, String email, Long id) {
+    public Student(String name, LocalDate dateOfBirth, String email, Long id) {
         this.name = name;
-        this.age = age;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.id = id;
     }
 
-    public Student(String name, Integer age, LocalDate dateOfBirth, String email) {
+    public Student(String name, LocalDate dateOfBirth, String email) {
         this.name = name;
-        this.age = age;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
     }
@@ -51,7 +51,7 @@ public class Student {
     }
 
     public Integer getAge() {
-        return age;
+        return Period.between(this.dateOfBirth, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {

@@ -61,20 +61,41 @@ separate API and Service layers
     - API layer and Service layers communicate and service layer -> data -> API
 
 ----------------------------------------------------------------
-DATA ACCESS LAYER (DB)
+ Database setup
 ----------------------------------------------------------------
 - Application.properties
     - Database configs
         - create-drop = clean state every time its run
+
 - Terminal from postgres, CREATE DATABASE (database name)
     - \du shows roles and attributes
     - GRANT ALL PRIVILEGES ON DATABASE "student" to "Hassan";
     - GRANT ALL PRIVILEGES ON DATABASE "student" to postgres;
     - \c to connect, \d relations
+
 - Sequence generator = sequence student_sequence
     - Starts at one and increments (Through allocation size) by one
 - Create table statement in terminal:
     - CREATE TABLE "student" with all the fields, PK is ID
+
+- \d now shows the schemas: Database and sequence generator (student_sequence)
+- after connecting (\c) and \d, \d student shows table and primary key
+    - Database is up and running with one table (Student)
+        - Still need data access layer
+
+----------------------------------------------------------------
+DATA ACCESS LAYERS
+- Create a class called xRepository (Common practice for database access layer)
+- Interface extends Jparepository
+- DONE
+    - Use interface inside service class
+        - Studentservice object creation and autowire constructor
+        - getstudents returns a list from the object
+
+- Add students using repository
+    - Create class = StudentConfig @Configuration
+    - CommandLineRunner object name takes parameter StudentRepository reponame @Bean
+    - Lambda return args which are students
 
 ----------------------------------------------------------------
 Postman

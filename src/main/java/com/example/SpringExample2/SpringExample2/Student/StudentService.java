@@ -1,6 +1,6 @@
 package com.example.SpringExample2.SpringExample2.Student;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -8,15 +8,20 @@ import java.time.LocalDate;
 import java.util.List;
 @Service
 public class StudentService {
-        @GetMapping // To get something out of the server
+
+    private final StudentRepository studentRepository;
+
+    @Autowired
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
+    @GetMapping // To get something out of the server
         public List<Student> getStudents(){ // get mapping for student controller
-            return List.of(
-                    new Student("Hassan",
-                            22,
-                            LocalDate.of(2000,07,25),
-                            "h.s.asif@student.reading.ac.uk",
-                            1l
-                    )); // This returns a JSON representation
-            //^^ This is currently a static list, eventually will come from a database
+            return studentRepository.findAll(); // Returns a list
         }
+
+    public void addNewStudent(Student student) {
+        System.out.println(student);
+    }
 }
