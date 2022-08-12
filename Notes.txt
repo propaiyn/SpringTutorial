@@ -46,6 +46,41 @@ SERVICE LAYER (Business logic)
 - API layer should talk to the service layer  to get some data
 - Service layer should communicate with data access layer to get data (round trip)
 -
+
+----------------------------------------------------------------
+ANNOTATIONS
+----------------------------------------------------------------
+-@Component is exact same but @Service is more readable
+
+----------------------------------------------------------------
+DEPENDENCY INJECTION
+----------------------------------------------------------------
+- Try and use dependency injection as much as possible
+- @Service and @Autowired were used to inject dependencies and
+separate API and Service layers
+    - API layer and Service layers communicate and service layer -> data -> API
+
+----------------------------------------------------------------
+DATA ACCESS LAYER (DB)
+----------------------------------------------------------------
+- Application.properties
+    - Database configs
+        - create-drop = clean state every time its run
+- Terminal from postgres, CREATE DATABASE (database name)
+    - \du shows roles and attributes
+    - GRANT ALL PRIVILEGES ON DATABASE "student" to "Hassan";
+    - GRANT ALL PRIVILEGES ON DATABASE "student" to postgres;
+    - \c to connect, \d relations
+- Sequence generator = sequence student_sequence
+    - Starts at one and increments (Through allocation size) by one
+- Create table statement in terminal:
+    - CREATE TABLE "student" with all the fields, PK is ID
+
+----------------------------------------------------------------
+Postman
+----------------------------------------------------------------
+-
+
 ----------------------------------------------------------------
 TIPS
 ----------------------------------------------------------------

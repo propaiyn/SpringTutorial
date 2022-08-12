@@ -1,13 +1,29 @@
 package com.example.SpringExample2.SpringExample2.Student;
 
+import javax.annotation.processing.Generated;
+import javax.persistence.*;
 import java.time.LocalDate;
 
+//To map student to the database:
+@Entity // Mapping (Hibernate)
+@Table // For table in database
 public class Student {
-    private String name;
+    @Id //Generate random ID
+    @SequenceGenerator(
+            name = "student_sequence",
+            sequenceName = "student_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE, // Recommended for postgres
+            generator = "student_sequence" // Sequence that we just created
+    )
+    private Long id;
     private Integer age;
     private LocalDate dateOfBirth;
     private String email;
-    private Long id;
+    private String name;
+
     public Student() {
     }
 
